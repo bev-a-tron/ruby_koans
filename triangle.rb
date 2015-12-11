@@ -13,7 +13,22 @@
 # and
 #   about_triangle_project_2.rb
 #
+
+def two_legs_too_short(numbers)
+  numbers = numbers.sort
+  if numbers[0] + numbers[1] > numbers[2]
+    return false
+  end
+  true
+end
+
 def triangle(a, b, c)
+  if a <= 0 or b <= 0 or c <= 0
+    raise TriangleError
+  elsif two_legs_too_short([a, b, c])
+    raise TriangleError
+  end
+
   if a == b and b == c
     :equilateral
   elsif a == b or b == c or a == c
